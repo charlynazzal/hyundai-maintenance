@@ -42,7 +42,17 @@ My approach followed a standard data science workflow:
 
 ## Results and Final Conclusion
 
-Despite my rigorous process of modeling and tuning, no model I built was able to achieve a performance significantly better than a random guess (all results were between 50-57% accuracy).
+My modeling process confirmed the initial hypothesis that the data lacks predictive power. Despite a rigorous process of modeling and tuning, no model was able to achieve a performance significantly better than a random guess.
+
+Here is a summary of the test set performance for each model:
+
+| Model | Accuracy | Weighted Avg F1-Score |
+| :--- | :---: | :---: |
+| Baseline Random Forest | 57.0% | 0.57 |
+| Tuned Random Forest | 55.0% | 0.55 |
+| XGBoost | 49.1% | 0.48 |
+
+Notably, the performance slightly *decreased* as the model complexity increased. The most powerful model, XGBoost, produced the worst result. This is a strong indicator that the models were attempting to fit to noise rather than a true underlying signal.
 
 The key insight came from a **feature importance analysis** I performed on the best model. The analysis clearly showed that none of the provided features (`Engine Temperature`, `Brake Pad Thickness`, `Tire Pressure`, `Maintenance Type`) had strong predictive power.
 
