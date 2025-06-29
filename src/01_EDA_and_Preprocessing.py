@@ -21,8 +21,8 @@ def plot_anomaly_distribution(df):
     plt.figure(figsize=(6, 4))
     sns.countplot(x='Anomaly Indication', data=df)
     plt.title('Distribution of Anomaly Indication')
-    plt.savefig('../images/anomaly_distribution.png')
-    print("\nSaved anomaly distribution plot to ../images/anomaly_distribution.png")
+    plt.savefig('images/anomaly_distribution.png')
+    print("\nSaved anomaly distribution plot to images/anomaly_distribution.png")
     plt.close()
 
 def plot_feature_distributions(df):
@@ -34,7 +34,7 @@ def plot_feature_distributions(df):
         plt.figure(figsize=(10, 5))
         sns.histplot(df, x=col, hue='Anomaly Indication', kde=True, multiple="stack")
         plt.title(f'Distribution of {col} by Anomaly Indication')
-        plt.savefig(f'../images/{col.replace(" ", "_").replace("(°C)", "C").replace("(mm)", "mm").replace("(PSI)", "PSI")}_distribution.png')
+        plt.savefig(f'images/{col.replace(" ", "_").replace("(°C)", "C").replace("(mm)", "mm").replace("(PSI)", "PSI")}_distribution.png')
         plt.close()
 
     # Categorical feature
@@ -42,9 +42,9 @@ def plot_feature_distributions(df):
     sns.countplot(data=df, x='Maintenance Type', hue='Anomaly Indication')
     plt.title('Maintenance Type vs. Anomaly Indication')
     plt.xticks(rotation=15)
-    plt.savefig('../images/maintenance_type_analysis.png')
+    plt.savefig('images/maintenance_type_analysis.png')
     plt.close()
-    print("Feature distribution plots saved to ../images/")
+    print("Feature distribution plots saved to images/")
 
 def plot_correlation_heatmap(df):
     """Plots the correlation heatmap for numerical features."""
@@ -54,16 +54,16 @@ def plot_correlation_heatmap(df):
     numeric_df = df.select_dtypes(include=np.number)
     sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt=".2f")
     plt.title('Correlation Matrix of Numerical Features')
-    plt.savefig('../images/correlation_heatmap.png')
+    plt.savefig('images/correlation_heatmap.png')
     plt.close()
-    print("Correlation heatmap saved to ../images/")
+    print("Correlation heatmap saved to images/")
 
 def main():
     """Main function to run the EDA script."""
     sns.set_style('whitegrid')
     
     # Load data
-    df = load_data('../data/cars_hyundai.csv')
+    df = load_data('data/cars_hyundai.csv')
     
     # Display first 5 rows
     print("First 5 rows of the dataset:")
